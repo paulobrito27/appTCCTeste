@@ -1,0 +1,31 @@
+<ion-content class="ion-padding">
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="cadastrar()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <h1 class="ion-text-center">
+    <img src="../../assets/icon/img.jpg" >
+  </h1>
+
+
+  <form [formGroup]="formulario" (submit)="onSubmit()">
+    <ion-list>
+      <ion-list-header>Escolha o usuario</ion-list-header>
+      <ion-item>
+        <ion-label>Usuario</ion-label>
+        <ion-select formControlName="usuario">
+          <ion-select-option *ngFor="let user of usuarios" [value]='user'>{{user.nome}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="block" color="primary" [disabled]="formulario.invalid" type="submit">ENTRAR</ion-button>
+
+  </form>
+
+
+
+</ion-content>

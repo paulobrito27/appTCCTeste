@@ -1,0 +1,31 @@
+<ion-content class="ion-padding" >
+    <h1 class="ion-text-center">
+      <ion-icon name="ios-people"   color="primary" class="icon-7em"></ion-icon>
+    </h1>
+  
+    <form [formGroup]="formulario" (submit)="onSubmit()">
+      <ion-item>
+        <ion-icon name="md-person" color="primary" slot="start"></ion-icon>
+        <ion-input type="text" placeholder="Nome" formControlName="nome" inputmode="text" autofocus="true">
+        </ion-input>
+        <ion-note slot="end"  *ngIf="formulario.controls.nome.errors">Min 3 caracteres</ion-note>
+      </ion-item>
+  
+      <ion-item>
+        <ion-icon name="mail" color="primary" slot="start"></ion-icon>
+        <ion-input type="email" placeholder="Email de destino" formControlName="email" inputmode="email">
+        </ion-input>
+        <ion-note slot="end"  *ngIf="formulario.controls.email.errors">digite email válido</ion-note>
+      </ion-item>
+  
+      <ion-item>
+        <ion-icon name="md-finger-print" color="primary" slot="start"></ion-icon>
+        <ion-input type="text" placeholder="Registro" formControlName="registro"></ion-input>
+        <ion-note slot="end"  *ngIf="formulario.controls.registro.errors">min 5 caracteres</ion-note>
+      </ion-item>
+  
+      <ion-button expand="block" color="primary" type="submit" [disabled]="formulario.invalid">CADASTRAR USUARIO
+      </ion-button>
+    </form>
+  
+  </ion-content>

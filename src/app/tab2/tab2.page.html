@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="end">
+      <ion-icon name="menu" class="menu" (click)="opcoes2()"></ion-icon>
+    </ion-buttons>
+    <ion-title>Recebimento / leitura cega</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="secondary">
+    <ion-searchbar showCancelButton cancelButtonText="Custom Cancel" placeholder="Buscar material..." animated
+      (ionInput)=" busca( $event ) "></ion-searchbar>
+  </ion-toolbar>
+  <ion-toolbar color="secondary">
+    <p>Romaneio: {{ romaneio }}</p>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-virtual-scroll [items]=" listaTela ">
+    <ion-card *virtualItem="let item ">
+      <ion-list lines="none">
+
+        <ion-item color="medium ">
+          <ion-label>
+            <ion-item color="medium">
+              <h1>{{ item.codigo }}</h1>
+              <ion-icon slot="end" name="ios-eye" class="icone" (click)="mostra(item.nome)"></ion-icon>
+            </ion-item>
+            <h2>{{ item.nome }}</h2>
+          </ion-label>
+        </ion-item>
+
+        <ion-item color="tertiary">
+          <ion-icon slot=start name="sync" class="icone" (click)="apaga(item)"></ion-icon>
+          <ion-icon slot=end name="hand" (click)="manual(item)"></ion-icon>
+          <ion-badge slot=end color="warning" class="icone">{{item.qtd_contada }}</ion-badge>
+          <ion-icon slot=end name="md-barcode" class="icone" (click)=" lerQr2(item) "></ion-icon>
+        </ion-item>
+      </ion-list>
+
+    </ion-card>
+  </ion-virtual-scroll>
+
+</ion-content>
